@@ -9,7 +9,7 @@ contract Deposit {
     uint256 totalBalance;
     mapping(address => uint256) public balances;
 
-    event Deposit(address indexed user, uint256 amount);
+    event DepositEvent(address indexed user, uint256 amount);
 
     constructor()  {
         totalBalance = 1000;
@@ -25,7 +25,7 @@ contract Deposit {
       
        balances[msg.sender] = balances[msg.sender] + amount;
         
-         emit Deposit(msg.sender, amount);
+         emit DepositEvent(msg.sender, amount);
     }
     function getBalance() external view returns (uint256) {
         return balances[msg.sender];
