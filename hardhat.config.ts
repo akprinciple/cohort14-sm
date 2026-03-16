@@ -1,7 +1,6 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import dotenv from "dotenv";
-const{ LISK_SEPOLIA_URL, PRIVATE_KEY } = process.env;
 
 dotenv.config();
 
@@ -15,8 +14,8 @@ const config: HardhatUserConfig = {
   
   networks: {
    lisk_sepolia: {
-      url: `${LISK_SEPOLIA_URL}`,
-      accounts: [`0x${PRIVATE_KEY}`],
+      url: process.env.LISK_SEPOLIA_URL || "https://rpc.sepolia-api.lisk.com",
+      accounts: process.env.PRIVATE_KEY ? [`0x${process.env.PRIVATE_KEY}`] : [],
     },
 
     hardhat: {
